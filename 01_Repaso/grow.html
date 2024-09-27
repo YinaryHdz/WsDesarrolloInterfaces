@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            display: grid;
+            grid-template-areas:
+                "topbar topbar topbar"
+                "sidebar content content"
+                "footer footer footer";
+            height: 100vh;
+            grid-template-columns: 20px 1fr 1fr;
+            grid-template-rows: 60px 1fr 60px; /* Corregido el espacio */
+        }
+
+        header {
+            grid-area: topbar;
+            background-color: aliceblue;
+            padding: 10px;
+            text-align: center;
+        }
+
+        aside {
+            grid-area: aside; /* Cambiado a 'aside' */
+            background-color: lightgrey;
+            padding: 10px;
+        }
+
+        article {
+            grid-area: content;
+            padding: 10px;
+        }
+
+        nav {
+            grid-area: sidebar;
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: aliceblue;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Estilos opcionales para una mejor visualización */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 100px);
+            grid-gap: 10px;
+        }
+
+        .grid-item {
+            background-color: #ff69b4;
+            padding: 20px;
+        }
+        nav{
+            display: flex;                      /* Usar Flexbox */
+            justify-content: center;            /* Centrar horizontalmente */
+            align-items: center;                /* Centrar verticalmente */
+            background-color: #333;             /* Color de fondo */
+            height: 60px;                       /* Altura de la barra */
+        }
+        nav a {
+            color: white;                       /* Color del texto */
+            text-decoration: none;              /* Sin subrayado */
+            padding: 15px 20px;                /* Espaciado alrededor del texto */
+            transition: background-color 0.3s;  /* Transición para el hover */
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>Header</header>
+        <aside>Aside</aside>
+        <article>Article</article>
+        <nav>Nav</nav>
+        <footer>Footer</footer>
+    </main>
+</body>
+
+</html>
