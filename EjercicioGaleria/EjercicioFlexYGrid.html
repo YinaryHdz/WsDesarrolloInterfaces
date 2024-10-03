@@ -18,6 +18,7 @@
             padding: 0 20px;
             font-family: arial;
         }
+
         nav a {
             color: rgb(255, 255, 255);
             /* Texto sin subrayado*/
@@ -25,56 +26,110 @@
             padding: 15px;
             text-align: center;
             transition: background-color 0.3s;
-            flex: 1;    
+            flex: 1;
         }
+
         nav a:hover {
             /* Color de fondo al pasar el ratón */
             background-color: #7dc0c0;
-        
         }
 
         /*Estilo para la galeria de imagenes mediante grid*/
-        .grid-container{
+        .grid-container {
             display: grid;
             grid-gap: 10px;
             justify-content: space-around;
         }
-        .grid-item{
+
+        .grid-item {
             padding: 10px;
             height: 300px;
         }
-        img{
+
+        img {
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover; /*Ajusta la imagen para no perder la proporcion cuando se ajuste 
+            object-fit: cover;
+            /*Ajusta la imagen para no perder la proporcion cuando se ajuste 
                                 el tamaño de las pantallas*/
             box-shadow: 0 0 16px #1e1e1e;
             border-radius: 2cap;
         }
+
+        .grid-item img:hover {
+            transform: scale(1.1, 1.1);
+            /* Escala la imagen un 10% más grande en ambos ejes */
+            transition: transform 1s;
+        }
+
         /*Con esto hacemos que la galeria se ajuste a pantallas pequeñas*/
-        @media(max-width: 599px){
-            .grid-container{
+        @media(max-width: 599px) {
+            .grid-container {
                 /*Disposicion en una columna*/
                 grid-template-columns: 1fr;
             }
         }
+
         /*Con esto hacemos que la galeria se ajuste a pantallas medianas*/
-        @media(min-width: 600px) and (max-width: 1023px){
-            .grid-container{
+        @media(min-width: 600px) and (max-width: 1023px) {
+            .grid-container {
                 /*Disposicion en dos columna*/
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
         /*Con esto hacemos que la galeria se ajuste a pantallas grandes*/
-        @media(min-width: 1024px){
-            .grid-container{
+        @media(min-width: 1024px) {
+            .grid-container {
                 /*Disposicion en dos columna y dos filas*/
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(2, auto);
             }
         }
-        </style>
+
+        .buttons {
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Definición de grid con 2 columnas */
+        .grid-2-cols {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* Definición de grid con 3 columnas variables */
+        .grid-3-cols-var {
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtener los elementos del DOM
+            const gridContainer = document.getElementById('gridContainer');
+            const btn2Cols = document.getElementById('btn2Cols');
+            const btn3ColsVar = document.getElementById('btn3ColsVar');
+
+            // Event listener para el botón "Grid de 2 columnas"
+            btn2Cols.addEventListener('click', function () {
+                gridContainer.classList.remove('grid-3-cols-var');
+                gridContainer.classList.add('grid-2-cols');
+            });
+
+            // Event listener para el botón "Grid de 3 columnas variables"
+            btn3ColsVar.addEventListener('click', function () {
+                gridContainer.classList.remove('grid-2-cols');
+                gridContainer.classList.add('grid-3-cols-var');
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -85,7 +140,13 @@
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
         </nav>
-        <div class="grid-container">
+
+        <div class="buttons">
+            <button id="btn2Cols">Grid de 2 columnas</button>
+            <button id="btn3ColsVar">Grid de 3 columnas variables</button>
+        </div>
+
+        <div class="grid-container" id="gridContainer">
             <div class="grid-item">
                 <img src="https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg">
             </div>
