@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria</title>
+    <style>
+        /*Estilo para la barra de navegacion mediante flex*/
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #3e858f;
+            height: 60px;
+            /* Permite que los elementos se ajusten en pantallas pequeñas */
+            flex-wrap: wrap;
+            padding: 0 20px;
+            font-family: arial;
+        }
+
+        nav a {
+            color: rgb(255, 255, 255);
+            /* Texto sin subrayado*/
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.3s;
+            flex: 1;
+        }
+
+        nav a:hover {
+            /* Color de fondo al pasar el ratón */
+            background-color: #7dc0c0;
+        }
+
+        /*Estilo para la galeria de imagenes mediante grid*/
+        .grid-container {
+            display: grid;
+            grid-gap: 10px;
+            justify-content: space-around;
+        }
+
+        .grid-item {
+            padding: 10px;
+            height: 300px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            /*Ajusta la imagen para no perder la proporcion cuando se ajuste 
+                                el tamaño de las pantallas*/
+            box-shadow: 0 0 16px #1e1e1e;
+            border-radius: 2cap;
+        }
+
+        .grid-item img:hover {
+            transform: scale(1.1, 1.1);
+            /* Escala la imagen un 10% más grande en ambos ejes */
+            transition: transform 1s;
+        }
+
+        /*Con esto hacemos que la galeria se ajuste a pantallas pequeñas*/
+        @media(max-width: 599px) {
+            .grid-container {
+                /*Disposicion en una columna*/
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /*Con esto hacemos que la galeria se ajuste a pantallas medianas*/
+        @media(min-width: 600px) and (max-width: 1023px) {
+            .grid-container {
+                /*Disposicion en dos columna*/
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /*Con esto hacemos que la galeria se ajuste a pantallas grandes*/
+        @media(min-width: 1024px) {
+            .grid-container {
+                /*Disposicion en dos columna y dos filas*/
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, auto);
+            }
+        }
+
+        .buttons {
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="grid-container" id="gridContainer">
+            <div class="grid-item">
+                <img src="https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg">
+            </div>
+            <div class="grid-item">
+                <img src="https://png.pngtree.com/thumb_back/fh260/background/20230425/pngtree-white-tiger-lion-baby-image_2512827.jpg">
+            </div>
+            <div class="grid-item">
+                <img src="https://img.freepik.com/fotos-premium/bebe-jirafa-explorando-su-habitat-primera-vez-creado-inteligencia-artificial-generativa_124507-217644.jpg">
+            </div>
+            <div class="grid-item">
+                <img src="https://www.elefanteswiki.com/Imagenes/cuidados-y-convivencia-del-bebe-elefante.jpg">
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

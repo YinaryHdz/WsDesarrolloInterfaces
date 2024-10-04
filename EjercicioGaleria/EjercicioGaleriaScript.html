@@ -116,6 +116,8 @@
             const gridContainer = document.getElementById('gridContainer');
             const btn2Cols = document.getElementById('btn2Cols');
             const btn3ColsVar = document.getElementById('btn3ColsVar');
+            const img = document.getElementById('miImagen');
+            const images = gridContainer.querySelectorAll('img');
 
             // Event listener para el botón "Grid de 2 columnas"
             btn2Cols.addEventListener('click', function () {
@@ -128,6 +130,23 @@
                 gridContainer.classList.remove('grid-2-cols');
                 gridContainer.classList.add('grid-3-cols-var');
             });
+
+            const button = document.getElementById('circular');
+            button.addEventListener('click',()=>{
+                images.forEach(img => {
+                    img.style.borderRadius = '50%'
+                    img.style.objectFit = 'cover'
+                })
+            })
+
+            img.addEventListener('click',()=>{
+            if(img.src.endsWith ('https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg')){
+                img.src = 'https://concepto.de/wp-content/uploads/2021/07/hipopotamo-e1626653651667-800x400.jpg'
+            }else{
+                img.src= "https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg"
+            }
+            }) 
+
         });
     </script>
 </head>
@@ -144,11 +163,12 @@
         <div class="buttons">
             <button id="btn2Cols">Grid de 2 columnas</button>
             <button id="btn3ColsVar">Grid de 3 columnas variables</button>
+            <button id= "circular">Hacer las imagenes circulares</button>
         </div>
 
         <div class="grid-container" id="gridContainer">
             <div class="grid-item">
-                <img src="https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg">
+                <img src="https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg" id="miImagen">
             </div>
             <div class="grid-item">
                 <img src="https://png.pngtree.com/thumb_back/fh260/background/20230425/pngtree-white-tiger-lion-baby-image_2512827.jpg">
@@ -158,6 +178,12 @@
             </div>
             <div class="grid-item">
                 <img src="https://www.elefanteswiki.com/Imagenes/cuidados-y-convivencia-del-bebe-elefante.jpg">
+            </div>
+            <div class="grid-item">
+                <img src="https://viajes.chavetas.es/wp-content/uploads/albums/otros/animalesbebes15.jpg">
+            </div>
+            <div class="grid-item">
+                <img src="https://i.pinimg.com/550x/b1/cb/da/b1cbdaa46e5ddadf93e50313d2e4d090.jpg">
             </div>
         </div>
     </main>
