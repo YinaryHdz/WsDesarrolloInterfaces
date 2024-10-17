@@ -139,6 +139,24 @@
                 })
             })
 
+            const buttonCuadrado = document.getElementById('cuadrado');
+            buttonCuadrado.addEventListener('click',()=>{
+                images.forEach(img => {
+                    img.style.borderRadius = '0%'
+                    img.style.objectFit = 'cover'
+                })
+            })
+
+            const buttonRetrato = document.getElementById('retrato');
+            buttonRetrato.addEventListener('click', () => {
+                images.forEach(img => {
+                    img.style.borderRadius = '0%'; 
+                    img.style.objectFit = 'cover'; 
+                    img.style.width = '75%'; 
+                    img.style.height = 'auto'; 
+                    img.style.aspectRatio = '3/4';
+                });
+            });
             img.addEventListener('click',()=>{
             if(img.src.endsWith ('https://img.freepik.com/fotos-premium/lindo-dibujo-animado-hipopotamo-bebe-3d_960080-5537.jpg')){
                 img.src = 'https://concepto.de/wp-content/uploads/2021/07/hipopotamo-e1626653651667-800x400.jpg'
@@ -164,6 +182,8 @@
             <button id="btn2Cols">Grid de 2 columnas</button>
             <button id="btn3ColsVar">Grid de 3 columnas variables</button>
             <button id= "circular">Hacer las imagenes circulares</button>
+            <button id= "cuadrado">Hacer las imagenes cuadradas</button>
+            <button id= "retrato">Hacer las imagenes retrato</button>
         </div>
 
         <div class="grid-container" id="gridContainer">

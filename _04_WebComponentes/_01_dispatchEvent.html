@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <custom-dialog>
+      <button class="dialog-btn">Open</button>
+      <dialog open>
+        <button class="close-btn">🗙</button>
+        <h1>Dialog</h1>
+        <form>
+          <label for="input">Input</label>
+          <input id="input" type="text" />
+          <button type="submit">Submit</button>
+        </form>
+      </dialog>
+    </custom-dialog>
+
+    <style>
+      .close-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      dialog {
+        background-color: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 0 10px #00000061;
+        width: 400px;
+        padding: 20px;
+        position: relative;
+        text-align: center;
+      }
+    </style>
+
+    <script>
+      class CustomDialog extends HTMLElement {
+        constructor() {
+          super();
+        }
+        connectedCallback() {
+          // TODO listeners
+          // TODO dispatchEvent
+          this.dispatchEvent(new CustomEvent('submit', { detail: { input: 'value' } }));
+          // TODO close dialog
+        }
+      }
+    </script>
+  </body>
+</html>
