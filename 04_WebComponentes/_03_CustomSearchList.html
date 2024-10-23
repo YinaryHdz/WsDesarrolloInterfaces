@@ -159,14 +159,13 @@ const fruits = [
       // loop
       aux.map(fruit => {
         const li = template.querySelector('li').cloneNode(true);
-       
         searchResults.appendChild(li);
         li.querySelector('.item-value').textContent = fruit
       })
     }
     }
     
-        // Modo 0: insertar los datos en el dom #searchResults
+        // Modo 0: insertar los datos en el dom #searchResults                  
         // searchResults.textContent = `${aux.map(item => `<li>${item}</li>`).join('')}`
   
         // Mode 1

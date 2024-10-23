@@ -1,0 +1,55 @@
+.dialog-search{
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.boton-cerrar{
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+#buscador{
+    border: 2px solid #000;
+    height: 2em;
+    text-indent: 10px;
+    width: 100%;
+}
+#search-results{
+    list-style-type: none;
+    padding: 0;
+}
+
+.card{
+    position: relative;
+    box-shadow: 0 0 10px lightgray;
+    border-radius: 2%;
+    overflow: hidden;
+    padding: 10px 10px 10px 0;
+    img {
+      width: 80px;
+      object-fit: cover;
+    }
+  
+    .flex-col {
+      flex-flow: column;
+    }
+  
+    h5 {
+      margin: 0;
+      padding: 0;
+    }
+  
+    p {
+      font-size: x-small;
+      color: gray;
+    }
+    relative-time {
+      font-size: x-small;
+    }
+}
