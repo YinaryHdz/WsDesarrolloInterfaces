@@ -104,12 +104,18 @@ class CustomSearch extends HTMLElement{
         //Este "dialog" es un selector de tipo elemento
         const dialogo = this.querySelector('dialog');
 
+        if (!botonDialogo || !botonCerrar || !dialogo) {
+          console.error('Elementos necesarios no encontrados en el DOM');
+          return; // Detener la ejecución si los elementos no están presentes
+      }
+
         botonDialogo.addEventListener('click', () => {
             //El metodo "showModal" stá diseñado específicamente para ser utilizado 
             //con el elemento <dialog> en HTML. Su función principal es mostrar diálogos modales,.
             //un dialogo modal hace que el usuario tenga que interactuar con el, es decir, bloquea
             //cualquier accion subyacenta hasta que el dialogo se cierre
-            botonDialogo.showModal();
+            console.log('Boton clickado')
+            dialogo.showModal();
           });
         
         botonCerrar.addEventListener('click', () =>{
@@ -189,9 +195,9 @@ class CustomSearch extends HTMLElement{
              * appendChild(): Este método del DOM se utiliza para añadir un nodo (en este caso, 
              * un elemento <li>) como el último hijo del nodo que lo invoca (en este caso, searchResults).
              */
-            searchResults.appendChild(li);
-        })
-        customElements.define('custom-search', CustomSearch);
+            buscarResultados.appendChild(li);
+        })      
     }
 }
+customElements.define('custom-search', CustomSearch);
 

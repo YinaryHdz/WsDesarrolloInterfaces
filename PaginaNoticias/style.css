@@ -2,29 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
   }
-  
-  .logo {
-    color: white;
-    text-align: center;
-    margin: auto;
-    .logo-item {
-      background: black;
-      padding: 10px;
-      margin: 5px;
-    }
-  }
+  /*Encabezado*/
+ 
   
   .block {
     display: block;
   }
-  
-  .flex {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  
+
   .min-h-60px {
     min-height: 60px;
   }
@@ -37,10 +21,26 @@ body {
     box-shadow: 0 0 10px #00000061;
   }
   
+  .flex {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .logo {
+    color: white;
+    text-align: center;
+    margin: auto;
+    .logo-item {
+      background: black;
+      padding: 10px;
+      margin: 5px;
+    }
+  }
   .transparent {
     background: transparent;
   }
-  
+
   .dialog-search {
     border: none;
     cursor: pointer;
