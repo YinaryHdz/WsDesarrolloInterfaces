@@ -84,7 +84,74 @@ const articles = [
     "description": "The Cybersecurity Association of China (CSAC) has urged a security review of Intel products sold in the country, claiming the US semiconductor firm poses ongoing threats to China’s national security and interests.",
     "date": "2024-10-01T10:22:56Z",
     "category": "Technology"
-  }
+  },
+
+  {
+    "image": "https://media.npr.org/assets/img/2021/11/13/gettyimages-1236538614_custom-e44f698c99e5b27f3513b65c4f43bce4afda42be.jpg",
+    "title": "Global Climate Summit Tackles Urgent Environmental Issues",
+    "description": "World leaders gather to discuss critical climate challenges and solutions at the Global Climate Summit in 2024.",
+    "date": "2024-10-20T09:00:00Z",
+    "category": "global"
+  },
+  {
+    "image": "https://assets.goal.com/images/v3/blt8effcb693170c7e5/Top_Ten_Olympic_Athletes.jpg",
+    "title": "Olympics 2024: Athletes Prepare for the Greatest Show on Earth",
+    "description": "As the world counts down to the 2024 Olympics, athletes from around the globe share their journeys and preparations.",
+    "date": "2024-10-18T12:30:00Z",
+    "category": "sport"
+  },
+  {
+    "image": "https://img.freepik.com/premium-photo/exploring-ancient-city-ruins-cultural-odyssey-historic-havens-heritage-highlight_706399-7834.jpg",
+    "title": "Exploring the Cultural Heritage of Ancient Civilizations",
+    "description": "A deep dive into the artifacts and traditions that shaped ancient cultures around the world.",
+    "date": "2024-10-15T14:00:00Z",
+    "category": "culture"
+  },
+  {
+    
+    "image": "https://sploro.eu/wp-content/uploads/2024/06/Blue-Breaking-News-YouTube-Channel-Art-2-768x432.png",
+    "title": "Tech Innovations Transforming the Future of Work",
+    "description": "In 2024, the landscape of work is undergoing a seismic shift as technology continues to evolve at an unprecedented pace. This article explores the latest innovations, including artificial intelligence, remote collaboration tools, and automation, that are redefining how we approach our daily tasks. From AI-driven software that optimizes workflows to virtual reality environments enhancing remote meetings, we delve into how these advancements are improving productivity and employee engagement. Furthermore, we discuss the implications of these changes on job roles, the skills required in the modern workforce, and the future of hybrid work models. As companies adapt to these technologies, understanding their impact on organizational culture and employee well-being becomes crucial for success.",
+    "date": "2024-10-12T16:45:00Z",
+    "category": "technology"
+    
+  },
+
+  {
+    "image": "https://static01.nyt.com/images/2022/11/07/world/07cop27-morning-lede-family-photo/07cop27-morning-lede-family-photo-videoSixteenByNine3000-v2.jpg",
+    "title": "World Leaders Unite for Peace at the Global Summit",
+    "description": "An overview of the initiatives discussed to promote peace and cooperation among nations.",
+    "date": "2024-10-10T11:15:00Z",
+    "category": "global"
+  },
+  {
+    "image": "https://assets.aws.worldathletics.org/large/62db7219246dc08c60cb72c2.jpg",
+    "title": "Record-Breaking Performances at the World Athletics Championships",
+    "description": "Highlights from the thrilling performances at this year's World Athletics Championships.",
+    "date": "2024-10-08T09:30:00Z",
+    "category": "sport"
+  },
+  {
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSYZFf-hrA99ACg0_4f9HGKNgwtQaa1lFVBA&s",
+    "title": "AI Advancements: Implications for Society and Ethics",
+    "description": "Examining the ethical concerns surrounding AI technology and its impact on society.",
+    "date": "2024-10-03T15:45:00Z",
+    "category": "technology"
+  },
+  {
+    "image": "https://www.tbsnews.net/sites/default/files/styles/big_2/public/images/2021/01/03/coronavirus_israel_vaccine.jpg",
+    "title": "Global Health Initiatives Aiming for Universal Vaccination",
+    "description": "Updates on worldwide efforts to ensure access to vaccines for all populations.",
+    "date": "2024-10-01T10:00:00Z",
+    "category": "global"
+  },
+  {
+    "image": "https://blog.nasm.org/hubfs/sports-nutrition-guide.jpg",
+    "title": "New Strategies in Sports Nutrition for Athletes",
+    "description": "This article delves into the latest trends in sports nutrition that are empowering athletes to maximize their performance and recovery. We explore how personalized nutrition plans tailored to individual needs and preferences are becoming increasingly popular, along with the rise of plant-based diets among elite athletes. Additionally, we discuss the role of supplements, such as adaptogens and protein powders, in enhancing endurance and strength.",
+    "date": "2024-09-29T08:30:00Z",
+    "category": "sport"
+  }, 
 
 ]
 
@@ -200,4 +267,61 @@ class CustomSearch extends HTMLElement{
     }
 }
 customElements.define('custom-search', CustomSearch);
+
+/**ARTICLE*/
+
+const getId = () => {
+  const searchParams = new URLSearchParams(location.search.slice(1));
+  return Number(searchParams.get('id'));
+}
+
+class CustomArticle extends HTMLElement {
+  constructor() {
+      super();
+      this.articleId = getId();
+  }
+  connectedCallback() {
+      this.render();
+  }
+
+  render() {
+      const article = articles.find(article => article.id == this.articleId)
+
+      // reemplazos de los contenidos del article
+      const h1 = this.querySelector('h1');
+      h1.textContent = article.title;
+      //   descripción
+      const description = this.querySelector('p');
+      description.textContent = article.description;
+      //   imagen
+      const img = this.querySelector('img');
+      img.src = article.image;
+      // relative time
+      const relativeTime = this.querySelector('relative-time');
+      //  relativeTime.setAttribute('time',article.date); --forma más nueva de hacer el relativeTime
+      const newRelativeTime = `<relative-time time="${article.date}"/>`//forma más simple pero antigua
+      relativeTime.outerHTML = newRelativeTime;
+  }
+}
+customElements.define('custom-article', CustomArticle);
+
+//Funcionalidad para el menu 
+document.getElementById('btn').addEventListener('click', function() {
+  const dropdownMenu = document.getElementById('dropdown');
+  // Alternar la visibilidad del menú
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+// Cerrar el menú si se hace clic fuera de él
+window.addEventListener('click', function(event) {
+  const dropdownMenu = document.getElementById('dropdown');
+  const menuToggle = document.getElementById('btn');
+
+  if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = 'none'; // Cerrar el menú
+  }
+});
+
+
+
 
