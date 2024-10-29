@@ -86,7 +86,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: #d8d8d8;
+  background-color: #c0c0c0;
 }
 
 /*Cierre de estilos de la barra de navegacion*/
@@ -111,22 +111,12 @@ dialog {
   position: relative;
   text-align: center;
 }
-
-.menu-toggle {
-  border: none;
-  cursor: pointer;
-  padding: 0px 20px;
-  font-size: 32px;
-  font-weight: bold;
-  font-family: math;
-}
-
 .disabled {
   color: #ccc;
   user-select: none;
 }
 
-#buscador {
+#site-search {
   border: 2px solid #000;
   height: 2em;
   text-indent: 10px;
@@ -169,7 +159,100 @@ dialog {
   }
 }
 
-main {
-  width: min(768px, 100%);
-  margin: auto;
+/*Estilos menu*/
+.menu-toggle {
+  border: none;
+  cursor: pointer;
+  padding: 0px 20px;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: math;
+}
+
+.container {
+  position: relative; /* Permite posicionar el menú desplegable */
+}
+
+
+.dropdown-menu {
+  display: none; /* Oculta el menú por defecto */
+  position: absolute; /* Posiciona el menú en relación al contenedor */
+  background-color: white; /* Color de fondo del menú */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra del menú */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-top: 10px; /* Espacio entre el botón y el menú */
+  z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+  width: 200px; /* Ancho del menú */
+}
+
+.dropdown-menu ul {
+  list-style-type: none; /* Sin viñetas */
+  padding: 0; /* Sin padding */
+  margin: 0; /* Sin margin */
+}
+
+.dropdown-menu li {
+  padding: 0; /* No padding en el li */
+}
+
+.dropdown-menu li a {
+  text-decoration: none; /* Sin subrayado */
+  color: black; /* Color del texto */
+  display: block; /* Hace que el enlace ocupe todo el espacio del li */
+  padding: 10px 15px; /* Espacio en los elementos del menú */
+  transition: background-color 0.3s; /* Añade transición suave al fondo */
+}
+
+.dropdown-menu li a:hover {
+  background-color: #c0c0c0; /* Efecto hover en todo el cuadro */
+}
+/*Final estilos menu*/
+
+/*Estilos contenedor de articulos*/
+.grid-container{
+  height: 650px;
+  display: grid;
+  grid-template-areas: 'sports technology global';
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 20px;
+  padding: 70px;    
+  padding-top: 10px;                    
+
+
+}
+
+.grid-item-technology{
+  grid-area: technology;
+
+}
+
+.grid-item-sports{
+  grid-area: sports;
+}
+
+.grid-item-global{
+  grid-area: global;
+  
+}
+
+.block {
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  
+}
+
+.block img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
 }
