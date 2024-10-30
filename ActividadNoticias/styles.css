@@ -24,6 +24,10 @@ body {
   background: transparent;
 }
 
+.text-left {
+  text-align: start;
+}
+
 .flex {
   display: flex;
   justify-content: left;
@@ -35,12 +39,25 @@ body {
   color: white;
   text-align: center;
   margin: auto;
+}
 
-  .logo-item {
-    background: black;
-    padding: 10px;
-    margin: 5px;
-  }
+.logo-item {
+  background: black;
+  padding: 10px;
+  margin: 5px;
+}
+
+.logo a {
+  color: inherit; /* Hereda el color del padre, en este caso blanco */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Para mantener el enlace como un bloque en línea */
+  padding: 0; /* Elimina el padding de los enlaces */
+  margin: 0; /* Elimina el margen de los enlaces */
+}
+
+.logo a:hover {
+  color: inherit; /* Evita el cambio de color en hover */
+  text-decoration: none; /* Sin subrayado en hover */
 }
 
 .dialog-search {
@@ -54,6 +71,38 @@ body {
   height: 23px;
   width: 23px;
   display: block;
+}
+
+dialog {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #00000061;
+  width: min(800px, 100%);
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+
+.disabled {
+  color: #ccc;
+  user-select: none;
+}
+#site-search {
+  border: 2px solid #000;
+  height: 2em;
+  text-indent: 10px;
+  width: 100%;
+}
+
+.close-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 /*final de estilos del encabezado*/
@@ -91,42 +140,8 @@ nav a:hover {
 
 /*Cierre de estilos de la barra de navegacion*/
 
-.boton-cerrar {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
 
-dialog {
-  background-color: #ffffff;
-  border-radius: 4px;
-  box-shadow: 0 0 10px #00000061;
-  width: min(800px, 100%);
-  padding: 20px;
-  position: relative;
-  text-align: center;
-}
-.disabled {
-  color: #ccc;
-  user-select: none;
-}
 
-#site-search {
-  border: 2px solid #000;
-  height: 2em;
-  text-indent: 10px;
-  width: 100%;
-}
-
-#search-results {
-  list-style-type: none;
-  padding: 0;
-}
 
 .card {
   position: relative;
@@ -159,54 +174,101 @@ dialog {
   }
 }
 
-/*Estilos menu*/
+/* Estilos del menú */
 .menu-toggle {
   border: none;
   cursor: pointer;
   padding: 0px 20px;
   font-size: 32px;
   font-weight: bold;
-  font-family: math;
+  font-family: 'Arial', sans-serif; /* Usar una fuente estándar para mejor compatibilidad */
+  background-color: transparent; /* Fondo transparente para el botón */
+  transition: none; /* Sin transición */
+}
+
+.menu-toggle:hover {
+  background-color: transparent; /* Sin efecto de hover */
 }
 
 .container {
   position: relative; /* Permite posicionar el menú desplegable */
 }
 
-
 .dropdown-menu {
-  display: none; /* Oculta el menú por defecto */
-  position: absolute; /* Posiciona el menú en relación al contenedor */
-  background-color: white; /* Color de fondo del menú */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra del menú */
-  border-radius: 8px; /* Bordes redondeados */
-  margin-top: 10px; /* Espacio entre el botón y el menú */
-  z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
-  width: 200px; /* Ancho del menú */
+  display: none; /* Ocultar el menú por defecto */
+  position: fixed; /* Fijar la posición del menú para llenar la pantalla */
+  top: 0; /* Alinear al inicio de la vista */
+  left: 0; /* Alinear a la izquierda de la vista */
+  height: 100vh; /* Altura completa de la vista */
+  background-color: #ffffff; /* Fondo blanco para el menú */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra más fuerte para profundidad */
+  border-radius: 0; /* Sin bordes redondeados para la altura completa */
+  z-index: 1000; /* Asegurar que el menú esté encima de otros elementos */
+  width: 250px; /* Ancho aumentado para un menú más grande */
+  transition: all 0.3s ease; /* Transición suave para el menú desplegable */
+  padding: 20px 0; /* Espaciado vertical para mejor distribución */
+}
+
+/* Estilos adicionales para el menú desplegable cuando se activa */
+.dropdown-menu.active {
+  display: block; /* Mostrar el menú cuando está activo */
 }
 
 .dropdown-menu ul {
   list-style-type: none; /* Sin viñetas */
   padding: 0; /* Sin padding */
-  margin: 0; /* Sin margin */
+  margin: 0; /* Sin margen */
 }
 
 .dropdown-menu li {
-  padding: 0; /* No padding en el li */
+  padding: 0; /* Sin padding en el li */
+  border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none; /* Quitar el borde del último elemento */
 }
 
 .dropdown-menu li a {
   text-decoration: none; /* Sin subrayado */
   color: black; /* Color del texto */
-  display: block; /* Hace que el enlace ocupe todo el espacio del li */
-  padding: 10px 15px; /* Espacio en los elementos del menú */
-  transition: background-color 0.3s; /* Añade transición suave al fondo */
+  display: block; /* Hacer que el enlace ocupe todo el espacio del li */
+  padding: 15px 20px; /* Aumentar el padding para un área de clic cómoda */
+  transition: background-color 0.3s, color 0.3s; /* Transición suave para efectos de hover */
 }
 
 .dropdown-menu li a:hover {
-  background-color: #c0c0c0; /* Efecto hover en todo el cuadro */
+  background-color: #e0e0e0; /* Cambiar el fondo al pasar el mouse */
+  color: #333; /* Color del texto más oscuro al pasar el mouse */
 }
-/*Final estilos menu*/
+
+/* Opcional: Añadir un encabezado al menú desplegable */
+.dropdown-header {
+  padding: 15px 20px; /* Espaciado para el encabezado */
+  font-weight: bold; /* Texto en negrita para el encabezado */
+  font-size: 1.2rem; /* Tamaño de fuente más grande */
+  background-color: #f0f0f0; /* Fondo del encabezado */
+  border-bottom: 1px solid #e0e0e0; /* Divisor debajo del encabezado */
+}
+
+/* Estilos para cuando el menú está visible */
+.dropdown-menu.active {
+  animation: fadeIn 0.3s ease; /* Agregar animación al desplegar el menú */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos finales del menú */
+
 
 /*Estilos contenedor de articulos*/
 .grid-container{
@@ -217,9 +279,9 @@ dialog {
   grid-gap: 20px;
   padding: 70px;    
   padding-top: 10px;                    
-
-
 }
+
+
 
 .grid-item-technology{
   grid-area: technology;
@@ -256,3 +318,53 @@ p {
   font-size: 1rem;
   color: #333;
 }
+
+
+.title {
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.description {
+  color: gray
+}
+
+
+/* Estilos para el contenedor del artículo individual */
+.article-container {
+  padding: 20px; /* Espaciado interno */
+  max-width: 800px; /* Ancho máximo para la lectura */
+  margin: 0 auto; /* Centrado horizontal */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #fff; /* Color de fondo blanco */
+}
+
+/* Imagen en el artículo individual */
+.article-container img {
+  width: 100%; /* Ancho completo */
+  height: auto; /* Altura automática para mantener la relación de aspecto */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+/* Títulos en el artículo */
+.article-container h1 {
+  font-size: 2rem; /* Título más grande */
+  margin: 10px 0; /* Margen vertical */
+}
+
+/* Subtítulos o descripciones */
+.article-container .description {
+  font-size: 1.2rem; /* Un poco más grande que el texto normal */
+  margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Texto del artículo */
+.article-container p {
+  font-size: 1rem; /* Tamaño de fuente estándar */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
+}
+
