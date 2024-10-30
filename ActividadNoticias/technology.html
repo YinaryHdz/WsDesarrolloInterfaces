@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="text/javascript" src="./funcionalidad.js" defer></script>
+</head>
+<body>
+    <custom-search>
+        <div class="flex p-10 shadow-md min-h-60px">
+            <dropdown-menu>
+                <button class="menu-toggle transparent" id="btn">
+                    ≡
+                    <i class="bx bx-chevron-down" id="arrow"></i>
+                </button>
+            
+                <div class="dropdown-menu" id="dropdown">
+                    <ul>
+                        <li><a href="index.html"><i class="bx bx-home"></i> Home</a></li>
+                        <li><a href="news.html"><i class="bx bx-newspaper"></i> News</a></li>
+                        <li><a href="sports.html"><i class="bx bx-football"></i> Sports</a></li>
+                        <li><a href="technology.html"><i class="bx bx-laptop"></i> Technology</a></li>
+                        <li><a href="culture.html"><i class="bx bx-paint"></i> Culture</a></li>
+                        <li><a href="global.html"><i class="bx bx-globe"></i> Global</a></li>
+                    </ul>
+                </div>
+            </dropdown-menu>
+            <span class="logo"> <a href="index.html"></a>
+                <span class="logo-item"><a href="index.html">Y</a></span>
+                <span class="logo-item"><a href="index.html">Y</a></span>
+                <span class="logo-item"><a href="index.html">H</a></span>
+                <span class="logo-item"><a href="index.html">C</a></span>
+            </span>
+            <button class="dialog-search transparent">
+                <img src="./img/lupa.png" alt="Buscar">
+            </button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="news.html">News</a>
+            <a href="sports.html">Sports</a>
+            <a href="technology.html">Technology</a>
+            <a href="culture.html">Culture</a>
+            <a href="global.html">Global</a>
+        </nav>
+        <dialog>
+            <button class="close-btn">🗙</button>
+            <h1>Search</h1>
+            <input type="search" id="site-search" name="q" />
+        
+            <template>
+              <li>
+                <div class="flex flex-col items-center card">
+                  <img class="object-cover item-image" src="https://flowbite.com/docs/images/blog/image-4.jpg">
+                  <div class="flex flex-col justify-between">
+                    <h5 class="item-title">
+                      <a href="article.html?id={id}">
+                        {value}
+                      </a>
+                    </h5>
+                    <p class="item-description">Here are the biggest enterprise technology acquisitions of 2021 so far, in
+                      reverse chronological order.
+                    </p>
+                    <relative-time time="Wed Oct 16 2024 11:12:41 GMT+0200" />
+                  </div>
+                </div>
+              </li>
+            </template>
+        
+            <ul id="search-results">
+            </ul>
+          </dialog>
+    </custom-search>
+    <custom-article>
+        <main class="grid-container">
+            <section class="grid-item grid-item-sports text-left" >
+                <article class="block">
+                    <h1 class="title">
+                        <a href="article.html?id=1">'He was an incurable romantic': The boy who lived a secret life in World of Warcraft</a>
+                    </h1>
+                    <relative-time time="2024-10-25T09:30:00Z"></relative-time>
+                    <img src="https://ichef.bbci.co.uk/images/ic/800xn/p0jzxv20.jpg.webp">
+                    <p class="description">
+                        This article explores the life of a young boy who found solace and adventure in the virtual world of World of Warcraft. 
+                    </p>                
+                </article>
+                <article class="block">
+                    <h1 class="title">
+                        <a href="article.html?id=5">Chinese cybersecurity association urges review of Intel products</a>
+                    </h1>
+                    <relative-time time="2024-10-01T10:22:56Z"></relative-time>
+                    <img src="https://www.computerworld.com/wp-content/uploads/2024/10/3567767-0-90640600-1729160617-IDG-Germany-Intel-September-News.jpg?quality=50&strip=all&w=1024">
+                    <p class="description">
+                        The Cybersecurity Association of China (CSAC) has formally called for a comprehensive security review of all Intel products currently available in the Chinese market. 
+                    </p>
+                </article> 
+            </section>
+                <section class=" grid-item grid-item-technology">
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=7">Meta must limit data for personalised ads - EU court</a>
+                        </h1>
+                        <relative-time time="2024-10-29T09:30:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/d486/live/f53dbff0-823f-11ef-b825-bf6174f6bf7c.jpg.webp">
+                        <p class="description">
+                            The European Court has ruled that Meta, the parent company of Facebook and Instagram, must limit its data collection practices to comply with EU regulations on personalized advertising. 
+                        </p>
+                        
+                    </article>
+                    <article class="block" >
+                        <h1 class="title">
+                            <a href="article.html?id=9">Tech Innovations Transforming the Future of Work</a>
+                        </h1>
+                        <relative-time time="2024-10-12T16:45:00Z"></relative-time>
+                        <img src="https://sploro.eu/wp-content/uploads/2024/06/Blue-Breaking-News-YouTube-Channel-Art-2-768x432.png">
+                        <p class="description">
+                            In 2024, the landscape of work is undergoing a seismic shift as technology continues to evolve at an unprecedented pace. This article explores the latest innovations.
+                        </p>
+                    </article> 
+                </section>
+            
+                <section class="grid-item grid-item-global" >
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=12">AI Advancements: Implications for Society and Ethics</a>
+                        </h1>
+                        <relative-time time="2024-10-03T15:45:00Z"></relative-time>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSYZFf-hrA99ACg0_4f9HGKNgwtQaa1lFVBA&s">
+                        <p class="description">
+                            Examining the ethical concerns surrounding AI technology and its impact on society.
+                        </p>                       
+                    </article>
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=30">Cod liver oil: A fishy fix that had surprisingly clear health benefits</a>
+                        </h1>
+                        <relative-time time="2024-10-28T16:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/images/ic/800xn/p0jzlb0l.jpg.webp">
+                        <p class="description">
+                            Cod liver oil has been praised for its surprisingly clear health benefits, providing essential nutrients that support overall well-being. 
+                        </p>                                             
+                    </article> 
+                </section>
+        </main>
+    </custom-article>  
+    
+</body>
+</html>

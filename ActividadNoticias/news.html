@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="text/javascript" src="./funcionalidad.js" defer></script>
+</head>
+<body>
+    <custom-search>
+        <div class="flex p-10 shadow-md min-h-60px">
+            <dropdown-menu>
+                <button class="menu-toggle transparent" id="btn">
+                    ≡
+                    <i class="bx bx-chevron-down" id="arrow"></i>
+                </button>
+            
+                <div class="dropdown-menu" id="dropdown">
+                    <ul>
+                        <li><a href="index.html"><i class="bx bx-home"></i> Home</a></li>
+                        <li><a href="news.html"><i class="bx bx-newspaper"></i> News</a></li>
+                        <li><a href="sports.html"><i class="bx bx-football"></i> Sports</a></li>
+                        <li><a href="technology.html"><i class="bx bx-laptop"></i> Technology</a></li>
+                        <li><a href="culture.html"><i class="bx bx-paint"></i> Culture</a></li>
+                        <li><a href="global.html"><i class="bx bx-globe"></i> Global</a></li>
+                    </ul>
+                </div>
+            </dropdown-menu>
+            <span class="logo"> <a href="index.html"></a>
+                <span class="logo-item"><a href="index.html">Y</a></span>
+                <span class="logo-item"><a href="index.html">Y</a></span>
+                <span class="logo-item"><a href="index.html">H</a></span>
+                <span class="logo-item"><a href="index.html">C</a></span>
+            </span>
+            <button class="dialog-search transparent">
+                <img src="./img/lupa.png" alt="Buscar">
+            </button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="news.html">News</a>
+            <a href="sports.html">Sports</a>
+            <a href="technology.html">Technology</a>
+            <a href="culture.html">Culture</a>
+            <a href="global.html">Global</a>
+        </nav>
+        <dialog>
+            <button class="close-btn">🗙</button>
+            <h1>Search</h1>
+            <input type="search" id="site-search" name="q" />
+        
+            <template>
+              <li>
+                <div class="flex flex-col items-center card">
+                  <img class="object-cover item-image" src="https://flowbite.com/docs/images/blog/image-4.jpg">
+                  <div class="flex flex-col justify-between">
+                    <h5 class="item-title">
+                      <a href="article.html?id={id}">
+                        {value}
+                      </a>
+                    </h5>
+                    <p class="item-description">Here are the biggest enterprise technology acquisitions of 2021 so far, in
+                      reverse chronological order.
+                    </p>
+                    <relative-time time="Wed Oct 16 2024 11:12:41 GMT+0200" />
+                  </div>
+                </div>
+              </li>
+            </template>
+        
+            <ul id="search-results">
+            </ul>
+          </dialog>
+    </custom-search>
+    <custom-article>
+        <main class="grid-container">
+            <section class="grid-item grid-item-sports text-left" >
+                <article class="block">
+                    <h1 class="title">
+                        <a href="article.html?id=21">What are Harris and Trump's policies?</a>
+                    </h1>
+                    <relative-time time="2024-10-29T12:00:00Z"></relative-time>
+                    <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/aead/live/a0cd6930-6f83-11ef-8c1a-df523ba43a9a.png.webp">
+                    <p class="description">
+                        An in-depth analysis of the key policies proposed by Vice President Kamala Harris and former President Donald Trump. 
+                    </p>                   
+                </article>
+                <article class="block">
+                    <h1 class="title">
+                        <a href="article.html?id=22">Jeff Bezos defends Washington Post's end to election endorsements</a>
+                    </h1>
+                    <relative-time time="2024-10-29T12:00:00Z"></relative-time>
+                    <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/f9f8/live/94af0710-95e6-11ef-9607-9df2d810c28b.jpg.webp">
+                    <p class="description">
+                        Jeff Bezos, the owner of the Washington Post, has publicly defended the newspaper's decision to discontinue election endorsements. 
+                    </p>
+                </article> 
+            </section>
+                <section class=" grid-item grid-item-technology">
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=23">Alarm call as world's trees slide towards extinction</a>
+                        </h1>
+                        <relative-time time="2024-10-28T14:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/eeed/live/bc09f310-9483-11ef-b409-29c78ef3feec.jpg.webp">
+                        <p class="description">
+                            A new report reveals that a significant percentage of the world's tree species.
+                        </p>
+                        
+                    </article>
+                    <article class="block" >
+                        <h1 class="title">
+                            <a href="article.html?id=24">Why female entrepreneurs are key to getting more women to work</a>
+                        </h1>
+                        <relative-time time="2024-10-29T12:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/bdd7/live/00f542e0-9515-11ef-9cde-517ea4c35d17.jpg.webp">
+                        <p class="description">
+                            This article discusses the critical role female entrepreneurs play in increasing women's participation in the workforce. 
+                        </p>
+                    </article> 
+                </section>
+            
+                <section class="grid-item grid-item-global" >
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=29">Writer to be town's first non-royal female statue</a>
+                        </h1>
+                        <relative-time time="2024-10-29T16:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/83ff/live/47d93530-9534-11ef-944d-8f6466829a27.jpg.webp">
+                        <p class="description">
+                            A local writer is set to be honored with a statue, becoming the first non-royal woman to receive such recognition in the town's history. 
+                        </p>                       
+                    </article>
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=25">What's happening with children's gender care in Scotland?</a>
+                        </h1>
+                        <relative-time time="2024-10-28T17:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/news/800/cpsprodpb/0af1/live/da384b30-f72f-11ee-890b-ef49125d5cad.jpg.webp">
+                        <p class="description">
+                            Recent developments in Scotland regarding children's gender care have sparked significant debate and concern. 
+                        </p>                                                
+                    </article> 
+                </section>
+        </main>
+    </custom-article>  
+    
+</body>
+</html>

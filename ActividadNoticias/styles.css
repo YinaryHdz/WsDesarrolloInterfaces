@@ -132,11 +132,21 @@ nav a {
   flex: 1;
   margin: 0 10px;
   display: block;
+  text-decoration: none; 
+  padding-bottom: 2px; /* Espacio para la barra de subrayado */
 }
 
 nav a:hover {
   background-color: #c0c0c0;
 }
+
+nav a.active {
+  color: inherit; /* Mantiene el color del texto igual al de los demás enlaces */
+  border-bottom: 3px solid black; /* Barra negra debajo del botón */
+  padding-bottom: 2px; /* Ajusta el espaciado si es necesario */
+}
+
+
 
 /*Cierre de estilos de la barra de navegacion*/
 
@@ -254,6 +264,12 @@ nav a:hover {
 /* Estilos para cuando el menú está visible */
 .dropdown-menu.active {
   animation: fadeIn 0.3s ease; /* Agregar animación al desplegar el menú */
+}
+
+.dropdown-menu ul li a.active {
+  color: #ffffff;
+  background-color: #007bff;
+  font-weight: bold;
 }
 
 @keyframes fadeIn {

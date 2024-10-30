@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="text/javascript" src="./funcionalidad.js" defer></script>
+</head>
+<body>
+    <custom-search>
+        <div class="flex p-10 shadow-md min-h-60px">
+            <dropdown-menu>
+                <button class="menu-toggle transparent" id="btn">
+                    ≡
+                    <i class="bx bx-chevron-down" id="arrow"></i>
+                </button>
+            
+                <div class="dropdown-menu" id="dropdown">
+                    <ul>
+                        <li><a href="index.html"><i class="bx bx-home"></i> Home</a></li>
+                        <li><a href="news.html"><i class="bx bx-newspaper"></i> News</a></li>
+                        <li><a href="sports.html"><i class="bx bx-football"></i> Sports</a></li>
+                        <li><a href="technology.html"><i class="bx bx-laptop"></i> Technology</a></li>
+                        <li><a href="culture.html"><i class="bx bx-paint"></i> Culture</a></li>
+                        <li><a href="global.html"><i class="bx bx-globe"></i> Global</a></li>
+                    </ul>
+                </div>
+            </dropdown-menu>
+            <span class="logo"> <a href="index.html"></a>
+                <span class="logo-item"><a href="index.html">Y</a></span>
+                <span class="logo-item"><a href="index.html">Y</a></span>
+                <span class="logo-item"><a href="index.html">H</a></span>
+                <span class="logo-item"><a href="index.html">C</a></span>
+            </span>
+            <button class="dialog-search transparent">
+                <img src="./img/lupa.png" alt="Buscar">
+            </button>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="news.html">News</a>
+            <a href="sports.html">Sports</a>
+            <a href="technology.html">Technology</a>
+            <a href="culture.html">Culture</a>
+            <a href="global.html">Global</a>
+        </nav>
+        <dialog>
+            <button class="close-btn">🗙</button>
+            <h1>Search</h1>
+            <input type="search" id="site-search" name="q" />
+        
+            <template>
+              <li>
+                <div class="flex flex-col items-center card">
+                  <img class="object-cover item-image" src="https://flowbite.com/docs/images/blog/image-4.jpg">
+                  <div class="flex flex-col justify-between">
+                    <h5 class="item-title">
+                      <a href="article.html?id={id}">
+                        {value}
+                      </a>
+                    </h5>
+                    <p class="item-description">Here are the biggest enterprise technology acquisitions of 2021 so far, in
+                      reverse chronological order.
+                    </p>
+                    <relative-time time="Wed Oct 16 2024 11:12:41 GMT+0200" />
+                  </div>
+                </div>
+              </li>
+            </template>
+        
+            <ul id="search-results">
+            </ul>
+          </dialog>
+    </custom-search>
+    <custom-article>
+        <main class="grid-container">
+            <section class="grid-item grid-item-sports text-left" >
+                <article class="block">
+                    <h1 class="title">
+                        <a href="article.html?id=4">11 of the Best TV Shows to Watch This November</a>
+                    </h1>
+                    <relative-time time="2024-10-13T10:25:24Z"></relative-time>
+                    <img src="https://ichef.bbci.co.uk/images/ic/800xn/p0k0q461.jpg.webp">
+                    <p class="description">
+                        Get ready for November’s binge-worthy lineup, as streaming platforms roll out a mix of new releases and returning favorites.
+                    </p>                    
+                </article>
+                <article class="block">
+                    <h1 class="title">
+                        <a href="article.html?id=8">Exploring the Cultural Heritage of Ancient Civilizations</a>
+                    </h1>
+                    <relative-time time="2024-10-15T14:00:00Z"></relative-time>
+                    <img src="https://img.freepik.com/premium-photo/exploring-ancient-city-ruins-cultural-odyssey-historic-havens-heritage-highlight_706399-7834.jpg">
+                    <p class="description">
+                        A deep dive into the artifacts and traditions that shaped ancient cultures around the world.
+                    </p>
+                </article> 
+            </section>
+                <section class=" grid-item grid-item-technology">
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=20">Camila Cabello 'Surprised' by Lack of Female Headliners</a>
+                        </h1>
+                        <relative-time time="2024-10-26T18:00:00Z"></relative-time>
+                        <img src="https://www.nit.pt/wp-content/uploads/2020/03/4fe69d7dde5ecd9dec15ffc0336974c2-754x394.jpg">
+                        <p class="description">
+                            Camila Cabello expressed her surprise and disappointment at the ongoing lack of female headliners in major music festivals. 
+                        </p>
+                        
+                    </article>
+                    <article class="block" >
+                        <h1 class="title">
+                            <a href="article.html?id=28">Disease: Why Lady Gaga's Comeback Hits the Spot</a>
+                        </h1>
+                        <relative-time time="2024-10-29T16:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/images/ic/800xn/p0k07b5k.jpg.webp">
+                        <p class="description">
+                            Lady Gaga’s latest return to the spotlight has resonated strongly with fans, addressing themes of resilience and health. 
+                        </p>
+                    </article> 
+                </section>
+            
+                <section class="grid-item grid-item-global" >
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=18">Should There Be a Ban on Teenage Popstars?</a>
+                        </h1>
+                        <relative-time time="2024-10-29T15:30:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/images/ic/800xn/p0k06l1s.jpg.webp">
+                        <p class="description">
+                            As the music industry increasingly highlights the pressures and challenges faced by young artists. 
+                        </p>                        
+                    </article>
+                    <article class="block">
+                        <h1 class="title">
+                            <a href="article.html?id=19">Shawn Mendes Says He's 'Just Figuring Out' Sexuality</a>
+                        </h1>
+                        <relative-time time="2024-10-29T18:00:00Z"></relative-time>
+                        <img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/f44e/live/6a01e680-960f-11ef-90df-3f1823a91773.jpg.webp">
+                        <p class="description">
+                            In a candid interview, Shawn Mendes opened up about his journey of self-discovery regarding his sexuality. The pop star shared insights into the pressures of fame and the importance of being true to oneself, emphasizing that exploring one's identity is a natural and ongoing process.
+                        </p>                        
+                    </article> 
+                </section>
+        </main>
+    </custom-article>  
+    
+</body>
+</html>
