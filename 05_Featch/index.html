@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Noticias Falsas</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+  <div class="grid-item">
+    <nav class="grid-item-nav">
+      <div class="menu-container">
+        <!-- Botón para mostrar el menú -->
+        <button class="menu-button">≡</button>
+        
+        <!-- Menú desplegable principal -->
+        <ul class="menu">
+          <li><a href="#home">Home</a></li>
+          <li>
+            <a href="#sport">News</a>
+            <!-- Submenú para "Sport" -->
+            <ul class="submenu">
+              <li><a href="#football">Wold</a></li>
+              <li><a href="#tennis">Technology</a></li>
+              <li><a href="#tennis">Finance</a></li>
+            </ul>
+          </li>
+          <li><a href="#world">Sport</a></li>
+          <li><a href="#entertainment">Entertainment</a></li>
+        </ul>
+      </div>
+      <a href="#home">Home</a>
+      <a href="Sport.html">Sport</a>
+      <a href="#services">World</a>
+      <a href="#contact">Finance</a>
+      <a href="#contact">Technology</a>
+      <a href="#contact">Entertainment</a>
+    </nav>
+  </div>
+  <h1>Artículos de Noticias Falsas</h1>
+  
+  <news-viewer section = ""></news-viewer>
+
+  <!-- Plantilla para un artículo -->
+  <template id="article-template">
+    <div class="article">
+        <h3 class="title"></h3>
+        <p><strong>Autor:</strong> <span class="author"></span></p>
+        <p class="description"></p>
+      <hr>
+    </div>
+  </template>
+  <script src="news-viewer.js"></script>
+
+</body>
+</html>

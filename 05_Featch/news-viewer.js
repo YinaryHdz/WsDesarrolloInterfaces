@@ -3,15 +3,16 @@
 class NewsViewer extends HTMLElement {
   constructor() {
     super();
+    this.section = this.getAttribute('section');
   }
 
   connectedCallback() {
-    this.loadArticles();
+    this.loadArticles(this.section);
   }
 
-  async loadArticles() {
+  async loadArticles(section = "") {
     try {
-      const response = await fetch('https://news-foniuhqsba-uc.a.run.app');
+      const response = await fetch(`https://news-foniuhqsba-uc.a.run.app/${this.section}`);
       if (!response.ok) {
         throw new Error('Error al obtener los artículos');
       }
@@ -47,3 +48,5 @@ class NewsViewer extends HTMLElement {
 
 // Definir el elemento personalizado
 customElements.define('news-viewer', NewsViewer);
+
+
