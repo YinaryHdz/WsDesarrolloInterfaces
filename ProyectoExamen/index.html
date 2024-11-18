@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drones</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./funcionalidad.js" defer></script>
+</head>
+<body>
+    <header>
+        <dropdown-menu>
+            <button class="menu-toggle transparent" id="btn">
+              ≡
+              <i class="bx bx-chevron-down" id="arrow"></i>
+            </button>
+            <div class="dropdown-menu" id="dropdown">
+            </div>
+          </dropdown-menu>
+      
+          <span class="logo">
+                <span>DroneHub</span>
+          </span>
+      
+          <div id="cart-info" class="logo-img">
+            <span id="cart-count">0</span> 
+            <img src="./img/carrito.png" alt="Carrito">
+        </div>
+    </header>
+    <news-viewer></news-viewer>
+    <shopping-cart id="cart">
+        <div id="cart-count">0</div>
+        <div id="cart-list"></div>
+    </shopping-cart> 
+    <template id="product-template">
+        <div class="product">
+            <img class="image"> 
+            <h3 class="title"></h3>
+            <p class="price"></p>
+            <p class="description"></p>
+            <button class="add-to-cart">Añadir a la cesta</button>
+        </div>
+    </template>
+</body>
+</html>

@@ -1,0 +1,227 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  
+  /* Estilos del menú */
+  .menu-toggle {
+    border: none;
+    cursor: pointer;
+    padding: 0px 20px;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; /* Usar una fuente estándar para mejor compatibilidad */
+    background-color: transparent; /* Fondo transparente para el botón */
+    transition: none; /* Sin transición */
+  }
+  
+  
+  
+  /*Estilos contenedor de articulos*/
+  .grid-container{
+    height: 650px;
+    display: grid;
+    grid-template-areas: 'sports technology global';
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 20px;
+    padding: 70px;    
+    padding-top: 10px;                    
+  }
+  
+  
+/*Estilos Header*/
+
+/* Estilos generales para el encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #2D3E50; /* Fondo oscuro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  header .logo span {
+    color: #00B0FF; /* Color para resaltar el nombre de la marca */
+  }
+  
+  header .menu-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  header .menu-toggle:hover {
+    color: #00B0FF; /* Resaltar el ícono cuando se pasa el mouse */
+  }
+  
+  header .dropdown-menu {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    background-color: #2D3E50;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    min-width: 200px;
+  }
+  
+  header .dropdown-menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  
+  header .dropdown-menu a:hover {
+    background-color: #00B0FF; /* Resaltar ítem al pasar el mouse */
+    color: #fff;
+  }
+
+/* Estilos generales para el contenedor del carrito */
+#cart-info {
+    display: flex;           /* Usamos flexbox para alineación */
+    align-items: center;     /* Alinea verticalmente los elementos */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    cursor: pointer;        /* Cambia el cursor al pasar sobre el carrito */
+    padding: 10px 15px;      /* Espaciado interno alrededor del carrito */
+    background-color: #f8f8f8; /* Fondo sutil para el contenedor */
+    border-radius: 25px;     /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición para el hover */
+}
+
+/* Efecto al pasar el mouse por encima */
+#cart-info:hover {
+    background-color: #e0e0e0;  /* Cambia el fondo al hacer hover */
+}
+
+/* Estilo para el número del carrito */
+#cart-count {
+    font-size: 18px;       /* Tamaño de la fuente para el contador */
+    font-weight: bold;     /* Poner el texto en negrita */
+    color: #333;           /* Color del texto */
+    margin-right: 10px;    /* Espacio entre el contador y la imagen */
+}
+
+/* Estilo de la imagen del carrito */
+#cart-info img {
+    width: 30px;           /* Ancho de la imagen */
+    height: 30px;          /* Altura de la imagen */
+    object-fit: contain;   /* Asegura que la imagen se ajuste dentro del contenedor sin distorsión */
+    transition: transform 0.3s ease; /* Efecto de transición para animación */
+}
+
+/* Efecto al pasar el mouse sobre la imagen */
+#cart-info img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño de la imagen al hacer hover */
+}
+  
+  /* Responsividad para móviles */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px 20px;
+    }
+  
+    header .logo {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  
+    header .menu-toggle {
+      font-size: 28px;
+    }
+  }
+
+  
+
+  news-viewer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 10px;
+  }
+
+
+
+  /* Estilo básico para las imágenes */
+.image {
+    width: 100%;             
+    height: auto;            
+    object-fit: cover;       
+    border-radius: 8px;      
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  
+  }
+  
+  .image:hover {
+    transform: scale(1.05);  
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+  }
+  
+  /* Estilos para las imágenes en tarjetas (dentro de un contenedor) */
+  .product .image {
+    max-width: 100%;          
+    max-height: 250px;        
+    object-fit: cover;        
+    margin-bottom: 10px;      
+  }
+  
+
+
+  .product {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .add-to-cart {
+    background-color: #00B0FF;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .add-to-cart:hover {
+    background-color:#00B0FF;
+  }
+  
+  /* Estilos para el carrito */
+  #cart-info {
+    padding: 10px;
+    background-color: #f4f4f4;
+  }
+  
+  .cart-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #cart-list {
+    padding: 10px;
+    background-color: #fafafa;
+  }
+  
+ 
+
+  
+
+  

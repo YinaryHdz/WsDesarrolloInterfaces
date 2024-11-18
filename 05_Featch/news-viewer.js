@@ -12,7 +12,7 @@ class NewsViewer extends HTMLElement {
 
   async loadArticles(section = "") {
     try {
-      const response = await fetch(`https://news-foniuhqsba-uc.a.run.app/${this.section}`);
+      const response = await fetch("https://news-foniuhqsba-uc.a.run.app/");
       if (!response.ok) {
         throw new Error('Error al obtener los artículos');
       }
