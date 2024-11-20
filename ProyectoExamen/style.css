@@ -14,21 +14,7 @@ body {
     background-color: transparent; /* Fondo transparente para el botón */
     transition: none; /* Sin transición */
   }
-  
-  
-  
-  /*Estilos contenedor de articulos*/
-  .grid-container{
-    height: 650px;
-    display: grid;
-    grid-template-areas: 'sports technology global';
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-gap: 20px;
-    padding: 70px;    
-    padding-top: 10px;                    
-  }
-  
-  
+
 /*Estilos Header*/
 
 /* Estilos generales para el encabezado */
@@ -89,62 +75,113 @@ header {
     background-color: #00B0FF; /* Resaltar ítem al pasar el mouse */
     color: #fff;
   }
-
-/* Estilos generales para el contenedor del carrito */
+/* Contenedor principal del carrito */
 #cart-info {
-    display: flex;           /* Usamos flexbox para alineación */
-    align-items: center;     /* Alinea verticalmente los elementos */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    cursor: pointer;        /* Cambia el cursor al pasar sobre el carrito */
-    padding: 10px 15px;      /* Espaciado interno alrededor del carrito */
-    background-color: #f8f8f8; /* Fondo sutil para el contenedor */
-    border-radius: 25px;     /* Bordes redondeados */
-    transition: background-color 0.3s ease; /* Transición para el hover */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
 }
 
-/* Efecto al pasar el mouse por encima */
-#cart-info:hover {
-    background-color: #e0e0e0;  /* Cambia el fondo al hacer hover */
+/* Icono del carrito y contador */
+#cart-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
-/* Estilo para el número del carrito */
+#cart-icon img {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+}
+
 #cart-count {
-    font-size: 18px;       /* Tamaño de la fuente para el contador */
-    font-weight: bold;     /* Poner el texto en negrita */
-    color: #333;           /* Color del texto */
-    margin-right: 10px;    /* Espacio entre el contador y la imagen */
+  background-color: #dc3545;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  margin-left: -10px;
 }
 
-/* Estilo de la imagen del carrito */
-#cart-info img {
-    width: 30px;           /* Ancho de la imagen */
-    height: 30px;          /* Altura de la imagen */
-    object-fit: contain;   /* Asegura que la imagen se ajuste dentro del contenedor sin distorsión */
-    transition: transform 0.3s ease; /* Efecto de transición para animación */
+/* Lista de productos */
+#cart-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-height: 0; /* Inicialmente está oculta */
+  overflow: hidden; /* Oculta el contenido al estar cerrado */
+  padding: 10px;
+  transition: max-height 0.3s ease-out; /* Transición suave */
+  z-index: 1000;
 }
 
-/* Efecto al pasar el mouse sobre la imagen */
-#cart-info img:hover {
-    transform: scale(1.1); /* Aumenta el tamaño de la imagen al hacer hover */
+/* Cuando no está oculta, desplegar la lista */
+#cart-list:not(.hidden) {
+  max-height: 400px; /* Altura máxima para la lista cuando está visible */
 }
-  
-  /* Responsividad para móviles */
-  @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
-    }
-  
-    header .logo {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-  
-    header .menu-toggle {
-      font-size: 28px;
-    }
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item p {
+  margin: 0;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.delete-icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.cart-item-image {
+  width: 40px;   /* Ajusta el tamaño de la imagen */
+  height: 40px;  /* Ajusta el tamaño de la imagen */
+  margin-right: 10px;
+  border-radius: 4px;  /* Bordes redondeados */
+}
+
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
   }
+
+  header .logo {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  header .menu-toggle {
+    font-size: 28px;
+  }
+}
+
 
   
 

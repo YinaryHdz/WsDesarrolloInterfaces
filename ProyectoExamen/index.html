@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drones</title>
+    <title>DroneHub</title>
     <link rel="stylesheet" href="./style.css">
     <script type="text/javascript" src="./funcionalidad.js" defer></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind CSS -->
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: {
+                primary: '#0D3B66',
+                secondary: '#FAF0CA',
+            },
+            fontFamily: {
+                sans: ['Roboto', 'sans-serif'],
+            },
+            },
+        },
+        }
+    </script>
+    <style>
+        [anchor] {
+        anchor-name: auto;
+        }
+        [target] {
+        position: absolute;
+        position-anchor: auto;
+        position-area: span-top right;
+        margin: 0;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,19 +54,60 @@
           </span>
       
           <div id="cart-info" class="logo-img">
-            <span id="cart-count">0</span> 
-            <img src="./img/carrito.png" alt="Carrito">
+            <div id="cart-icon">
+                <img src="./img/carrito.png" alt="Carrito">
+                <span id="cart-count">0</span>
+            </div>
+            <shopping-cart id="cart">
+                <div id="cart-list" class="hidden"></div>
+            </shopping-cart>
         </div>
+        
+        <template id="cart-item-template">
+            <div class="cart-item">
+                <img class="cart-item-image" src="" alt="Imagen del producto" style="width: 40px; height: 40px; margin-right: 10px; border-radius: 4px;">
+                <p class="cart-item-info"></p>
+                <button class="remove-item">
+                    <img src="./img/eliminar.png" alt="Eliminar" class="delete-icon">
+                </button>
+            </div>
+        </template>
+        <template id="product-template">
+            <div class="product">
+                <a href="producto.html?id=" class="product-link"> <!-- Link a la página de detalles -->
+                    <img class="image"> 
+                    <h3 class="title"></h3>
+                    <p class="rating"></p>
+                    <p class="price"></p>
+                    <p class="description"></p>
+                </a>
+                <button class="add-to-cart">Añadir a la cesta</button>
+            </div>
+        </template>
     </header>
+    <!-- Sección de Hero con Slider sin JavaScript -->
+<section class="relative overflow-hidden">
+    <!-- Contenedor de las Diapositivas -->
+    <div class="relative w-full h-screen">
+      <!-- Diapositiva 1 -->
+      <input type="radio" name="slider" id="slide-1" class="hidden peer/slide-1" checked>
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0 peer-checked/slide-1:opacity-100">
+        <div class="flex items-center justify-center h-full bg-cover bg-center" style="background-image: url('https://images-na.ssl-images-amazon.com/images/I/61IymdzC-4L._AC_SL1500_.jpg');">
+          <div class="text-center text-white px-6 bg-black bg-opacity-50 py-8">
+            <h1 class="text-5xl font-bold mb-4">Descubre los mejores drones con nosotros</h1>
+            <p class="text-xl mb-8">Visualiza todo desde lo alto</p>
+            <a href="#" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-800">Comienza con tu compra</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     <news-viewer></news-viewer>
-    <shopping-cart id="cart">
-        <div id="cart-count">0</div>
-        <div id="cart-list"></div>
-    </shopping-cart> 
     <template id="product-template">
         <div class="product">
             <img class="image"> 
             <h3 class="title"></h3>
+            <p class="rating"></p>
             <p class="price"></p>
             <p class="description"></p>
             <button class="add-to-cart">Añadir a la cesta</button>

@@ -95,6 +95,7 @@ class NewsViewer extends HTMLElement {
           productContent.querySelector('.image').src = product.image;
           productContent.querySelector('.title').textContent = product.title;
           productContent.querySelector('.price').textContent = product.price;
+          productContent.querySelector('.rating').textContent = product.rating;
           productContent.querySelector('.description').textContent = product.short_description;
           
           // Añadir el evento para el botón de añadir a la cesta
@@ -105,15 +106,19 @@ class NewsViewer extends HTMLElement {
         });   
   }
 
+  redirectToProductPage(productId) {
+    // Redirigir a la página de detalles con el ID del producto
+    window.location.href = `/producto.html?id=${productId}`;
+  }
+
   addToCart(product) {
     // Crear un evento personalizado para enviar el producto al carrito
     const event = new CustomEvent('add-to-cart', {
-        detail: product, // Información del producto
-        bubbles: true,  // Permite que el evento se propague a los ancestros
-        composed: true   // Permite que el evento atraviese los límites del Shadow DOM
+        detail: product, 
+        bubbles: true,  
+        composed: true   
     });
 
-    // Despachar el evento al elemento superior (por ejemplo, el carrito)
     this.dispatchEvent(event);
 }
 }
@@ -123,49 +128,167 @@ customElements.define('news-viewer', NewsViewer);
   
 
 class ShoppingCart extends HTMLElement {
-    constructor() {
-        super();
-        this.cart = [];  // Carrito vacío
-    }
+  constructor() {
+      super();
+      this.cart = []; // Lista de productos
+  }
 
-    connectedCallback() {
-        this.renderCart();  // Renderiza el carrito por primera vez
-        this.addEventListener('add-to-cart', this.handleAddToCart);  // Escucha el evento 'add-to-cart'
-    }
+  connectedCallback() {
+      this.renderCart();
+      document.addEventListener('add-to-cart', this.handleAddToCart.bind(this));
 
-    // Método para manejar el evento 'add-to-cart'
-    handleAddToCart(event) {
-        const product = event.detail; // Obtén el producto desde el evento
-        this.addToCart(product);      // Agregar producto al carrito
-    }
+      const cartIcon = document.getElementById('cart-icon');
+      if (cartIcon) {
+          cartIcon.addEventListener('click', this.toggleCartList.bind(this));
+      } else {
+          console.error("El elemento #cart-icon no existe.");
+      }
+  }
 
-    // Método para agregar un producto al carrito
-    addToCart(product) {
-        this.cart.push(product);  // Añadir el producto al carrito
-        this.renderCart();        // Actualizar la visualización del carrito
-    }
+  handleAddToCart(event) {
+      const product = event.detail;
+      this.addToCart(product);
+  }
 
-    // Método para renderizar el contenido del carrito
-    renderCart() {
-        const cartCount = this.querySelector('#cart-count');
-        const cartList = this.querySelector('#cart-list');
-        cartList.innerHTML = '';  // Limpiar el contenido anterior
+  addToCart(product) {
+      this.cart.push(product);
+      this.updateCartCount();
+  }
 
-        // Actualizar el número de productos en el carrito
-        cartCount.textContent = this.cart.length;
+  updateCartCount() {
+      const cartCount = document.getElementById('cart-count');
+      if (!cartCount) {
+          console.error("El elemento #cart-count no existe en el DOM.");
+          return;
+      }
+      cartCount.textContent = this.cart.length;
+  }
 
-        // Mostrar los productos en el carrito
-        this.cart.forEach(product => {
-            const productItem = document.createElement('div');
-            productItem.classList.add('cart-item');
-            productItem.innerHTML = `
-                <p>${product.title} - ${product.price}</p>
-            `;
-            cartList.appendChild(productItem);
+  toggleCartList() {
+      const cartList = document.querySelector('#cart-list');
+      if (!cartList) {
+          console.error("El elemento #cart-list no existe en el DOM.");
+          return;
+      }
+      cartList.classList.toggle('hidden');
+      this.renderCart();
+  }
+
+  renderCart() {
+    const cartList = this.querySelector('#cart-list');
+    const cartEmptyMessage = this.querySelector('#cart-empty-message'); 
+
+    cartList.innerHTML = ''; 
+
+    if (this.cart.length === 0) {
+        
+        if (cartEmptyMessage) {
+            cartEmptyMessage.style.display = 'block';  
+        }
+        cartList.style.display = 'none';  
+    } else {
+        if (cartEmptyMessage) {
+            cartEmptyMessage.style.display = 'none';
+        }
+        cartList.style.display = 'block';  
+
+        // Renderizar los productos en el carrito
+        const template = document.getElementById('cart-item-template');
+        this.cart.forEach((product, index) => {
+            const cartItem = document.importNode(template.content, true);
+
+            // Mostrar la imagen
+            const imageElement = cartItem.querySelector('.cart-item-image');
+            imageElement.src = product.image; 
+
+            // Mostrar el título y el precio
+            cartItem.querySelector('.cart-item-info').textContent = `${product.title} - ${product.price}`;
+
+            // Eliminar producto del carrito
+            cartItem.querySelector('.remove-item').addEventListener('click', () => this.removeFromCart(index));
+
+            cartList.appendChild(cartItem);
         });
     }
 }
 
-// Definir el elemento personalizado
+  removeFromCart(index) {
+      this.cart.splice(index, 1);
+      this.updateCartCount();
+      this.renderCart();
+  }
+}
+
+// Define el elemento personalizado
 customElements.define('shopping-cart', ShoppingCart);
 
+
+// Custom element para mostrar el detalle del producto
+class CustomProduct extends HTMLElement {
+  constructor() {
+    super();
+    this.productID = '';  // El ID del producto
+    this.product = {};  // Para almacenar el producto
+  }
+
+  connectedCallback() {
+    this.productID = new URLSearchParams(window.location.search).get('id');  // Obtener el ID desde la URL
+    if (this.productID) {
+      this.loadProductData(this.productID);  // Si hay ID, cargar los datos del producto
+    } else {
+      this.innerHTML = '<p>No se encontró el ID del producto.</p>';
+    }
+  }
+
+  async loadProductData(productID) {
+    try {
+      // Realizamos la solicitud a la API usando el ID del producto
+      const response = await fetch(`https://products-foniuhqsba-uc.a.run.app/Drones/${productID}`);
+      if (!response.ok) {
+        throw new Error('Producto no encontrado');
+      }
+      const product = await response.json();
+      this.product = product;  // Almacenamos el producto
+      this.render();  // Renderizamos el producto
+    } catch (error) {
+      console.error('Error al cargar el producto:', error);
+      this.innerHTML = '<p>Error al cargar el producto. Inténtalo nuevamente más tarde.</p>';
+    }
+  }
+
+  render() {
+    // Verifica si se ha cargado el producto
+    if (this.product) {
+      this.innerHTML = `
+        <div class="product-details">
+          <img class="product-image" src="${this.product.image}" alt="${this.product.title}">
+          <h1 class="product-title">${this.product.title}</h1>
+          <p class="product-price">Precio: $${this.product.price}</p>
+          <p class="product-rating">Rating: ${this.product.rating}</p>
+          <p class="product-description">${this.product.description}</p>
+          <button class="add-to-cart">Añadir al carrito</button>
+        </div>
+      `;
+
+      // Añadir el evento para el botón de añadir al carrito
+      const addToCartButton = this.querySelector('.add-to-cart');
+      addToCartButton.addEventListener('click', () => this.addToCart(this.product));
+    } else {
+      this.innerHTML = '<p>No se encontró el producto.</p>';
+    }
+  }
+
+  addToCart(product) {
+    // Crear un evento personalizado para enviar el producto al carrito
+    const event = new CustomEvent('add-to-cart', {
+        detail: product, 
+        bubbles: true,  
+        composed: true   
+    });
+
+    this.dispatchEvent(event);
+  }
+}
+
+// Definir el elemento personalizado
+customElements.define('custom-product', CustomProduct);
