@@ -102,13 +102,16 @@ class NewsViewer extends HTMLElement {
           const addToCartButton = productContent.querySelector('.add-to-cart');
           addToCartButton.addEventListener('click', () => this.addToCart(product));
 
+          const productLink = productContent.querySelector('.product-link');
+          productLink.href = `/product.html?id=${product.id}`;  // Redirige al producto específico
+      
           this.appendChild(productContent);
         });   
   }
 
   redirectToProductPage(productId) {
     // Redirigir a la página de detalles con el ID del producto
-    window.location.href = `/producto.html?id=${productId}`;
+    window.location.href = `/product.html?id=${productId}`;
   }
 
   addToCart(product) {
@@ -222,73 +225,51 @@ class ShoppingCart extends HTMLElement {
 // Define el elemento personalizado
 customElements.define('shopping-cart', ShoppingCart);
 
-
-// Custom element para mostrar el detalle del producto
-class CustomProduct extends HTMLElement {
+class ProductDetails extends HTMLElement {
   constructor() {
     super();
-    this.productID = '';  // El ID del producto
-    this.product = {};  // Para almacenar el producto
+    this.productID = new URLSearchParams(window.location.search).get('id');  // Obtener el ID del producto desde la URL
+    this.product = {};  // Guardar los detalles del producto
   }
 
   connectedCallback() {
-    this.productID = new URLSearchParams(window.location.search).get('id');  // Obtener el ID desde la URL
     if (this.productID) {
-      this.loadProductData(this.productID);  // Si hay ID, cargar los datos del producto
+      this.loadProductDetails(this.productID);  // Cargar detalles si hay un ID
     } else {
-      this.innerHTML = '<p>No se encontró el ID del producto.</p>';
+      this.innerHTML = '<p>No se encontró el producto.</p>';
     }
   }
 
-  async loadProductData(productID) {
+  async loadProductDetails(productID) {
     try {
-      // Realizamos la solicitud a la API usando el ID del producto
       const response = await fetch(`https://products-foniuhqsba-uc.a.run.app/Drones/${productID}`);
       if (!response.ok) {
         throw new Error('Producto no encontrado');
       }
       const product = await response.json();
-      this.product = product;  // Almacenamos el producto
-      this.render();  // Renderizamos el producto
+      this.product = product;  // Guardar el producto
+      this.renderProductDetails();  // Renderizar los detalles
     } catch (error) {
       console.error('Error al cargar el producto:', error);
       this.innerHTML = '<p>Error al cargar el producto. Inténtalo nuevamente más tarde.</p>';
     }
   }
 
-  render() {
-    // Verifica si se ha cargado el producto
-    if (this.product) {
+  renderProductDetails() {
+    if (this.product && this.product.title) {
       this.innerHTML = `
         <div class="product-details">
-          <img class="product-image" src="${this.product.image}" alt="${this.product.title}">
-          <h1 class="product-title">${this.product.title}</h1>
-          <p class="product-price">Precio: $${this.product.price}</p>
-          <p class="product-rating">Rating: ${this.product.rating}</p>
-          <p class="product-description">${this.product.description}</p>
-          <button class="add-to-cart">Añadir al carrito</button>
+          <img class="image" src="${this.product.image}" alt="${this.product.title}">
+          <h1 class="title">${this.product.title}</h1>
+          <p class="price">Precio: $${this.product.price}</p>
+          <p class="rating">Rating: ${this.product.rating}</p>
+          <p class="description">${this.product.description}</p>
         </div>
       `;
-
-      // Añadir el evento para el botón de añadir al carrito
-      const addToCartButton = this.querySelector('.add-to-cart');
-      addToCartButton.addEventListener('click', () => this.addToCart(this.product));
     } else {
       this.innerHTML = '<p>No se encontró el producto.</p>';
     }
   }
-
-  addToCart(product) {
-    // Crear un evento personalizado para enviar el producto al carrito
-    const event = new CustomEvent('add-to-cart', {
-        detail: product, 
-        bubbles: true,  
-        composed: true   
-    });
-
-    this.dispatchEvent(event);
-  }
 }
+customElements.define('product-details', ProductDetails);
 
-// Definir el elemento personalizado
-customElements.define('custom-product', CustomProduct);
