@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroneHub</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./funcionalidad.js" defer></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind CSS -->
+    <script>
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: {
+                primary: '#0D3B66',
+                secondary: '#FAF0CA',
+            },
+            fontFamily: {
+                sans: ['Roboto', 'sans-serif'],
+            },
+            },
+        },
+        }
+    </script>
+    <style>
+        [anchor] {
+        anchor-name: auto;
+        }
+        [target] {
+        position: absolute;
+        position-anchor: auto;
+        position-area: span-top right;
+        margin: 0;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="menu-container">
+            <!-- Botón para abrir el menú -->
+            <input type="checkbox" id="toggle-menu" class="hidden" />
+            <label for="toggle-menu" class="menu-button">
+              <span>≡ Categorías</span>
+            </label>
+          
+            <!-- Menú Popover -->
+            <div id="filter-menu" class="popover-tags">
+                <h3 class="popover-title">Filtrar por etiquetas</h3>
+                <ul class="filter-list">
+                  <li><a href="./pagina-principal.html">Drone</a></li>
+                  <li><a href="./Quadcopter.html">Quadcopter</a></li>
+                  <li><a href="./UAV.html">UAV</a></li>
+                  <li><a href="./Aerial-Photography.html">Aerial Photography</a></li>
+                  <li><a href="./Videography.html">Videography</a></li>
+                  <li><a href="./FPV.html">FPV</a></li>
+                  <li><a href="./GPS.html">GPS</a></li>
+                  <li><a href="./4K-Camera.html">4K Camera</a></li>
+                  <li><a href="./Gimbal.html">Gimbal</a></li>
+                  <li><a href="./Flight-modes.html">Flight Modes</a></li>
+                </ul>
+              </div>
+          </div>
+          
+        
+      
+          <span class="logo">
+                <span>DroneHub</span>
+          </span>
+      
+          <div id="cart-info" class="logo-img">
+            <!-- Disparador del popover -->
+            <input type="checkbox" id="toggle-cart" class="hidden" />
+            <label for="toggle-cart" id="cart-icon">
+                <img src="./img/carrito.png" alt="Carrito">
+                <span id="cart-count">3</span>
+            </label>
+        
+            <!-- Contenedor del carrito (popover) -->
+            <shopping-cart id="cart">
+                <div id="cart-list" class="popover">
+                    <!-- Contenido inicial del carrito -->
+                    <div class="cart-items">
+                        <p>Tu carrito está vacío</p>
+                    </div>
+                    <!-- Sección fija al final -->
+                    <div class="cart-footer">
+                        <p class="cart-total">Total: $0.00</p>
+                        <button class="checkout-button">Proceder al pago</button>
+                    </div>
+                </div>
+            </shopping-cart>
+        </div>
+        
+        </div>
+        
+        <!-- Template para items del carrito -->
+        <template id="cart-item-template">
+            <div class="cart-item">
+                <img class="cart-item-image" src="" alt="Imagen del producto" style="width: 40px; height: 40px; margin-right: 10px; border-radius: 4px;">
+                <p class="cart-item-info"></p>
+                <button class="remove-item">
+                    <img src="./img/eliminar.png" alt="Eliminar" class="delete-icon">
+                </button>
+            </div>
+        </template>
+        
+    </header>
+    <div class="toolbar">
+        <button class="view-toggle" id="change-view">Cambiar vista</button>
+        <button class="sort-toggle" id="sort-price">Ordenar por precio</button>
+        <button class="sort-toggle" id="sort-rating">Ordenar por rating</button>
+    </div>
+    <!-- Sección de Hero con Slider sin JavaScript -->
+    <news-viewer>
+        <div id="product-container"></div>
+    </news-viewer>
+    <template id="product-template">
+        <div class="product">
+            <a class="product-link">
+                <img class="image" src="" alt="">
+                <h3 class="title"></h3>
+                <p class="price"></p>
+                <p class="rating"></p>
+                <p class="description"></p>
+            </a>
+            <br/>
+            <button class="add-to-cart">Añadir al carrito</button>
+        </div>
+    </template>
+</body>
+</html>

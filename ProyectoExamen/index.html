@@ -40,50 +40,9 @@
 </head>
 <body>
     <header>
-        <dropdown-menu>
-            <button class="menu-toggle transparent" id="btn">
-              ≡
-              <i class="bx bx-chevron-down" id="arrow"></i>
-            </button>
-            <div class="dropdown-menu" id="dropdown">
-            </div>
-          </dropdown-menu>
-      
           <span class="logo">
                 <span>DroneHub</span>
           </span>
-      
-          <div id="cart-info" class="logo-img">
-            <div id="cart-icon">
-                <img src="./img/carrito.png" alt="Carrito">
-                <span id="cart-count">0</span>
-            </div>
-            <shopping-cart id="cart">
-                <div id="cart-list" class="hidden"></div>
-            </shopping-cart>
-        </div>
-        
-        <template id="cart-item-template">
-            <div class="cart-item">
-                <img class="cart-item-image" src="" alt="Imagen del producto" style="width: 40px; height: 40px; margin-right: 10px; border-radius: 4px;">
-                <p class="cart-item-info"></p>
-                <button class="remove-item">
-                    <img src="./img/eliminar.png" alt="Eliminar" class="delete-icon">
-                </button>
-            </div>
-        </template>
-        <template id="product-template">
-            <div class="product">
-                <a href="product.html?id=" class="product-link"> <!-- Link a la página de detalles -->
-                    <img class="image"> 
-                    <h3 class="title"></h3>
-                    <p class="rating"></p>
-                    <p class="price"></p>
-                    <p class="description"></p>
-                </a>
-                <button class="add-to-cart">Añadir a la cesta</button>
-            </div>
-        </template>
     </header>
     <!-- Sección de Hero con Slider sin JavaScript -->
 <section class="relative overflow-hidden">
@@ -96,22 +55,11 @@
           <div class="text-center text-white px-6 bg-black bg-opacity-50 py-8">
             <h1 class="text-5xl font-bold mb-4">Descubre los mejores drones con nosotros</h1>
             <p class="text-xl mb-8">Visualiza todo desde lo alto</p>
-            <a href="#" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-800">Comienza con tu compra</a>
+            <a href="./pagina-principal.html" class="bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-800">Comienza con tu compra</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-    <news-viewer></news-viewer>
-    <template id="product-template">
-        <div class="product">
-            <img class="image"> 
-            <h3 class="title"></h3>
-            <p class="rating"></p>
-            <p class="price"></p>
-            <p class="description"></p>
-            <button class="add-to-cart">Añadir a la cesta</button>
-        </div>
-    </template>
 </body>
 </html>
